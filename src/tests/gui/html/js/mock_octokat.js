@@ -34,5 +34,19 @@ function Octokat() {  // eslint-disable-line no-unused-vars
         });
       },
     },
+    commits: (sha) => {
+      return {
+        fetch() {
+          return Promise.resolve({
+            sha,
+            commit: {
+              committer: {
+                date: sha === 'deadbeef' ? '1970-01-01T00:00:00Z' : '2017-07-21T18:31:00Z',
+              },
+            },
+          });
+        },
+      };
+    },
   });
 }
